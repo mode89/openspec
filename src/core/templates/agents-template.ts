@@ -7,14 +7,15 @@ Instructions for AI coding assistants using OpenSpec for spec-driven development
 - Search existing work: \`openspec spec list --long\`, \`openspec list\` (use \`rg\` only for full-text search)
 - Decide scope: new capability vs modify existing capability
 - Pick a unique \`change-id\`: kebab-case, verb-led (\`add-\`, \`update-\`, \`remove-\`, \`refactor-\`)
-- Scaffold: \`proposal.md\`, \`tasks.md\`, \`design.md\` (only if needed), and delta specs per affected capability
+- Scaffold proposal: \`proposal.md\`, \`design.md\` (only if needed), and delta specs per affected capability
 - Write deltas: use \`## ADDED|MODIFIED|REMOVED|RENAMED Requirements\`; include at least one \`#### Scenario:\` per requirement
 - Validate: \`openspec validate [change-id] --strict\` and fix issues
 - Request approval: Do not start implementation until proposal is approved
+- Generate tasks: After approval, create \`tasks.md\` with ordered, verifiable work items
 
-## Three-Stage Workflow
+## Four-Stage Workflow
 
-### Stage 1: Creating Changes
+### Stage 1: Creating Change Proposals
 Create proposal when you need to:
 - Add features or functionality
 - Make breaking changes (API, schema)
@@ -42,11 +43,20 @@ Skip proposal for:
 
 **Workflow**
 1. Review \`openspec/project.md\`, \`openspec list\`, and \`openspec list --specs\` to understand current context.
-2. Choose a unique verb-led \`change-id\` and scaffold \`proposal.md\`, \`tasks.md\`, optional \`design.md\`, and spec deltas under \`openspec/changes/<id>/\`.
+2. Choose a unique verb-led \`change-id\` and scaffold \`proposal.md\`, optional \`design.md\`, and spec deltas under \`openspec/changes/<id>/\`.
 3. Draft spec deltas using \`## ADDED|MODIFIED|REMOVED Requirements\` with at least one \`#### Scenario:\` per requirement.
 4. Run \`openspec validate <id> --strict\` and resolve any issues before sharing the proposal.
 
-### Stage 2: Implementing Changes
+### Stage 2: Generating Tasks
+After proposal approval, generate implementation tasks:
+
+**Workflow**
+1. Read the proposal thoroughly to understand scope, requirements, and acceptance criteria.
+2. Draft \`tasks.md\` under \`openspec/changes/<id>/\` as an ordered list of small, verifiable work items.
+3. Include validation steps, highlight dependencies, and identify parallelizable work.
+4. Use format: \`- [ ] 1.1 Task description\` with subsections and nested subtasks when needed.
+
+### Stage 3: Implementing Changes
 Track these steps as TODOs and complete them one by one.
 1. **Read proposal.md** - Understand what's being built
 2. **Read design.md** (if exists) - Review technical decisions
@@ -56,7 +66,7 @@ Track these steps as TODOs and complete them one by one.
 6. **Update checklist** - After all work is done, set every task to \`- [x]\` so the list reflects reality
 7. **Approval gate** - Do not start implementation until the proposal is reviewed and approved
 
-### Stage 3: Archiving Changes
+### Stage 4: Archiving Changes
 After deployment, create separate PR to:
 - Move \`changes/[name]/\` → \`changes/archive/YYYY-MM-DD-[name]/\`
 - Update \`specs/\` if capabilities changed
@@ -195,16 +205,7 @@ The system SHALL provide...
 \`\`\`
 If multiple capabilities are affected, create multiple delta files under \`changes/[change-id]/specs/<capability>/spec.md\`—one per capability.
 
-4. **Create tasks.md:**
-\`\`\`markdown
-## 1. Implementation
-- [ ] 1.1 Create database schema
-- [ ] 1.2 Implement API endpoint
-- [ ] 1.3 Add frontend component
-- [ ] 1.4 Write tests
-\`\`\`
-
-5. **Create design.md when needed:**
+4. **Create design.md when needed:**
 Create \`design.md\` if any of the following apply; otherwise omit it:
 - Cross-cutting change (multiple services/modules) or a new architectural pattern
 - New external dependency or significant data model changes
@@ -233,6 +234,25 @@ Minimal \`design.md\` skeleton:
 ## Open Questions
 - [...]
 \`\`\`
+
+### Tasks Structure
+
+After proposal approval, create \`tasks.md\` with implementation checklist:
+
+\`\`\`markdown
+## 1. Implementation
+- [ ] 1.1 Create database schema
+- [ ] 1.2 Implement API endpoint
+- [ ] 1.3 Add frontend component
+- [ ] 1.4 Write tests
+\`\`\`
+
+**Guidelines:**
+- Break work into small, verifiable items
+- Include test and validation steps
+- Note dependencies between tasks
+- Identify parallelizable work
+- Keep tasks specific and actionable
 
 ## Spec File Format
 
@@ -325,11 +345,10 @@ openspec list
 # rg -n "Requirement:|Scenario:" openspec/specs
 # rg -n "^#|Requirement:" openspec/changes
 
-# 2) Choose change id and scaffold
+# 2) Choose change id and scaffold proposal
 CHANGE=add-two-factor-auth
 mkdir -p openspec/changes/$CHANGE/{specs/auth}
 printf "## Why\\n...\\n\\n## What Changes\\n- ...\\n\\n## Impact\\n- ...\\n" > openspec/changes/$CHANGE/proposal.md
-printf "## 1. Implementation\\n- [ ] 1.1 ...\\n" > openspec/changes/$CHANGE/tasks.md
 
 # 3) Add deltas (example)
 cat > openspec/changes/$CHANGE/specs/auth/spec.md << 'EOF'
@@ -342,8 +361,11 @@ Users MUST provide a second factor during login.
 - **THEN** an OTP challenge is required
 EOF
 
-# 4) Validate
+# 4) Validate proposal
 openspec validate $CHANGE --strict
+
+# 5) After approval, generate tasks
+printf "## 1. Implementation\\n- [ ] 1.1 ...\\n" > openspec/changes/$CHANGE/tasks.md
 \`\`\`
 
 ## Multi-Capability Example

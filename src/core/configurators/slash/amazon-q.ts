@@ -4,7 +4,8 @@ import { SlashCommandId } from '../../templates/index.js';
 const FILE_PATHS: Record<SlashCommandId, string> = {
   proposal: '.amazonq/prompts/openspec-proposal.md',
   apply: '.amazonq/prompts/openspec-apply.md',
-  archive: '.amazonq/prompts/openspec-archive.md'
+  archive: '.amazonq/prompts/openspec-archive.md',
+  tasks: '.amazonq/prompts/openspec-tasks.md'
 };
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
@@ -31,6 +32,15 @@ description: Archive a deployed OpenSpec change and update specs.
 ---
 
 The user wants to archive the following deployed change. Use the openspec instructions to archive the change and update specs.
+
+<ChangeId>
+  $ARGUMENTS
+</ChangeId>`,
+  tasks: `---
+description: Generate tasks.md for an OpenSpec change proposal.
+---
+
+The user wants to generate the tasks.md file for the following change. Use the openspec instructions to create the tasks file.
 
 <ChangeId>
   $ARGUMENTS

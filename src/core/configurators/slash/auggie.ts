@@ -4,7 +4,8 @@ import { SlashCommandId } from '../../templates/index.js';
 const FILE_PATHS: Record<SlashCommandId, string> = {
   proposal: '.augment/commands/openspec-proposal.md',
   apply: '.augment/commands/openspec-apply.md',
-  archive: '.augment/commands/openspec-archive.md'
+  archive: '.augment/commands/openspec-archive.md',
+  tasks: '.augment/commands/openspec-tasks.md'
 };
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
@@ -18,6 +19,10 @@ argument-hint: change-id
 ---`,
   archive: `---
 description: Archive a deployed OpenSpec change and update specs.
+argument-hint: change-id
+---`,
+  tasks: `---
+description: Generate tasks.md for an OpenSpec change proposal.
 argument-hint: change-id
 ---`
 };

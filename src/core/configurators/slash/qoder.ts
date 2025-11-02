@@ -9,12 +9,15 @@ import { SlashCommandId } from '../../templates/index.js';
 const FILE_PATHS: Record<SlashCommandId, string> = {
   // Create and validate new change proposals
   proposal: '.qoder/commands/openspec/proposal.md',
-  
+
   // Implement approved changes with task tracking
   apply: '.qoder/commands/openspec/apply.md',
-  
+
   // Archive completed changes and update specs
-  archive: '.qoder/commands/openspec/archive.md'
+  archive: '.qoder/commands/openspec/archive.md',
+
+  // Generate tasks for a change proposal
+  tasks: '.qoder/commands/openspec/tasks.md'
 };
 
 /**
@@ -40,6 +43,12 @@ name: OpenSpec: Archive
 description: Archive a deployed OpenSpec change and update specs.
 category: OpenSpec
 tags: [openspec, archive]
+---`,
+  tasks: `---
+name: OpenSpec: Tasks
+description: Generate tasks.md for an OpenSpec change proposal.
+category: OpenSpec
+tags: [openspec, tasks]
 ---`
 };
 

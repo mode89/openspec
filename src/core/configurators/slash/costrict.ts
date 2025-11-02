@@ -5,6 +5,7 @@ const FILE_PATHS = {
   proposal: '.cospec/openspec/commands/openspec-proposal.md',
   apply: '.cospec/openspec/commands/openspec-apply.md',
   archive: '.cospec/openspec/commands/openspec-archive.md',
+  tasks: '.cospec/openspec/commands/openspec-tasks.md',
 } as const satisfies Record<SlashCommandId, string>;
 
 const FRONTMATTER = {
@@ -18,6 +19,10 @@ argument-hint: change-id
 ---`,
   archive: `---
 description: "Archive a deployed OpenSpec change and update specs."
+argument-hint: change-id
+---`,
+  tasks: `---
+description: "Generate tasks.md for an OpenSpec change proposal."
 argument-hint: change-id
 ---`
 } as const satisfies Record<SlashCommandId, string>;

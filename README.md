@@ -90,24 +90,24 @@ These tools have built-in OpenSpec commands. Select the OpenSpec integration whe
 
 | Tool | Commands |
 |------|----------|
-| **Claude Code** | `/openspec:proposal`, `/openspec:apply`, `/openspec:archive` |
-| **CodeBuddy Code (CLI)** | `/openspec:proposal`, `/openspec:apply`, `/openspec:archive` (`.codebuddy/commands/`) — see [docs](https://www.codebuddy.ai/cli) |
-| **CoStrict** | `/openspec-proposal`, `/openspec-apply`, `/openspec-archive` (`.cospec/openspec/commands/`) — see [docs](https://costrict.ai)|
-| **Cursor** | `/openspec-proposal`, `/openspec-apply`, `/openspec-archive` |
+| **Claude Code** | `/openspec:proposal`, `/openspec:tasks`, `/openspec:apply`, `/openspec:archive` |
+| **CodeBuddy Code (CLI)** | `/openspec:proposal`, `/openspec:tasks`, `/openspec:apply`, `/openspec:archive` (`.codebuddy/commands/`) — see [docs](https://www.codebuddy.ai/cli) |
+| **CoStrict** | `/openspec-proposal`, `/openspec-tasks`, `/openspec-apply`, `/openspec-archive` (`.cospec/openspec/commands/`) — see [docs](https://costrict.ai)|
+| **Cursor** | `/openspec-proposal`, `/openspec-tasks`, `/openspec-apply`, `/openspec-archive` |
 | **Cline** | Rules in `.clinerules/` directory (`.clinerules/openspec-*.md`) |
-| **Crush** | `/openspec-proposal`, `/openspec-apply`, `/openspec-archive` (`.crush/commands/openspec/`) |
-| **Factory Droid** | `/openspec-proposal`, `/openspec-apply`, `/openspec-archive` (`.factory/commands/`) |
-| **OpenCode** | `/openspec-proposal`, `/openspec-apply`, `/openspec-archive` |
-| **Kilo Code** | `/openspec-proposal.md`, `/openspec-apply.md`, `/openspec-archive.md` (`.kilocode/workflows/`) |
-| **Qoder (CLI)** | `/openspec:proposal`, `/openspec:apply`, `/openspec:archive` (`.qoder/commands/openspec/`) — see [docs](https://qoder.com/cli) |
-| **Windsurf** | `/openspec-proposal`, `/openspec-apply`, `/openspec-archive` (`.windsurf/workflows/`) |
-| **Codex** | `/openspec-proposal`, `/openspec-apply`, `/openspec-archive` (global: `~/.codex/prompts`, auto-installed) |
-| **GitHub Copilot** | `/openspec-proposal`, `/openspec-apply`, `/openspec-archive` (`.github/prompts/`) |
-| **Amazon Q Developer** | `@openspec-proposal`, `@openspec-apply`, `@openspec-archive` (`.amazonq/prompts/`) |
-| **Auggie (Augment CLI)** | `/openspec-proposal`, `/openspec-apply`, `/openspec-archive` (`.augment/commands/`) |
+| **Crush** | `/openspec-proposal`, `/openspec-tasks`, `/openspec-apply`, `/openspec-archive` (`.crush/commands/openspec/`) |
+| **Factory Droid** | `/openspec-proposal`, `/openspec-tasks`, `/openspec-apply`, `/openspec-archive` (`.factory/commands/`) |
+| **OpenCode** | `/openspec-proposal`, `/openspec-tasks`, `/openspec-apply`, `/openspec-archive` |
+| **Kilo Code** | `/openspec-proposal.md`, `/openspec-tasks.md`, `/openspec-apply.md`, `/openspec-archive.md` (`.kilocode/workflows/`) |
+| **Qoder (CLI)** | `/openspec:proposal`, `/openspec:tasks`, `/openspec:apply`, `/openspec:archive` (`.qoder/commands/openspec/`) — see [docs](https://qoder.com/cli) |
+| **Windsurf** | `/openspec-proposal`, `/openspec-tasks`, `/openspec-apply`, `/openspec-archive` (`.windsurf/workflows/`) |
+| **Codex** | `/openspec-proposal`, `/openspec-tasks`, `/openspec-apply`, `/openspec-archive` (global: `~/.codex/prompts`, auto-installed) |
+| **GitHub Copilot** | `/openspec-proposal`, `/openspec-tasks`, `/openspec-apply`, `/openspec-archive` (`.github/prompts/`) |
+| **Amazon Q Developer** | `@openspec-proposal`, `@openspec-tasks`, `@openspec-apply`, `@openspec-archive` (`.amazonq/prompts/`) |
+| **Auggie (Augment CLI)** | `/openspec-proposal`, `/openspec-tasks`, `/openspec-apply`, `/openspec-archive` (`.augment/commands/`) |
 
 
-Kilo Code discovers team workflows automatically. Save the generated files under `.kilocode/workflows/` and trigger them from the command palette with `/openspec-proposal.md`, `/openspec-apply.md`, or `/openspec-archive.md`.
+Kilo Code discovers team workflows automatically. Save the generated files under `.kilocode/workflows/` and trigger them from the command palette with `/openspec-proposal.md`, `/openspec-tasks.md`, `/openspec-apply.md`, or `/openspec-archive.md`.
 
 #### AGENTS.md Compatible
 These tools automatically read workflow instructions from `openspec/AGENTS.md`. Ask them to follow the OpenSpec workflow if they need a reminder. Learn more about the [AGENTS.md convention](https://agents.md/).

@@ -3,6 +3,7 @@ import { SlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS: Record<SlashCommandId, string> = {
   proposal: '.cursor/commands/openspec-proposal.md',
+  tasks: '.cursor/commands/openspec-tasks.md',
   apply: '.cursor/commands/openspec-apply.md',
   archive: '.cursor/commands/openspec-archive.md'
 };
@@ -13,6 +14,12 @@ name: /openspec-proposal
 id: openspec-proposal
 category: OpenSpec
 description: Scaffold a new OpenSpec change and validate strictly.
+---`,
+  tasks: `---
+name: /openspec-tasks
+id: openspec-tasks
+category: OpenSpec
+description: Generate tasks.md for an OpenSpec change proposal.
 ---`,
   apply: `---
 name: /openspec-apply

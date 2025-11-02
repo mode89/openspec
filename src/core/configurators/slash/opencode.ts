@@ -7,6 +7,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   proposal: ".opencode/command/openspec-proposal.md",
   apply: ".opencode/command/openspec-apply.md",
   archive: ".opencode/command/openspec-archive.md",
+  tasks: ".opencode/command/openspec-tasks.md",
 };
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
@@ -26,6 +27,14 @@ description: Implement an approved OpenSpec change and keep tasks in sync.
   archive: `---
 agent: build
 description: Archive a deployed OpenSpec change and update specs.
+---
+<ChangeId>
+  $ARGUMENTS
+</ChangeId>
+`,
+  tasks: `---
+agent: build
+description: Generate tasks.md for an OpenSpec change proposal.
 ---
 <ChangeId>
   $ARGUMENTS
