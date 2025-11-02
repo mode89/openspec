@@ -21,7 +21,7 @@ const { version } = require('../../package.json');
 program
   .name('openspec')
   .description('AI-native system for spec-driven development')
-  .version(version);
+  .version(`${version} by mode89`);
 
 // Global options
 program.option('--no-color', 'Disable color output');
